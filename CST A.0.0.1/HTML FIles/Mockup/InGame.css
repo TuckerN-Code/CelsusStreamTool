@@ -1,0 +1,16 @@
+.Scoreboard {
+    text-align: center;
+}
+.Scoreboard > div {
+    vertical-align:top;
+    display:inline;
+}
+
+#Player1NameHolder
+{
+    padding-left:500px;
+}
+#Player1ScoreHolder
+{
+
+}
