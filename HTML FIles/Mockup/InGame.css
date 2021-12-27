@@ -1,0 +1,72 @@
+.Scoreboard {
+    text-align: center;
+}
+.Scoreboard > div {
+    vertical-align:top;
+    display:inline;
+}
+
+#Player1NameHolder
+{
+    padding-left:420px;
+    min-width:430px;
+    max-width:430px;
+}
+#Player1ScoreHolder
+{
+    min-width:100px;
+}
+
+#Player2ScoreHolder
+{
+    padding-left:10px;
+    min-width:100px;
+}
+
+#Player2NameHolder
+{
+    min-width:430px;
+    max-width:430px;
+}
+
+.PlayerNameText {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #FFFFFF;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: small-caps;
+    text-transform: none;
+    display: inline;
+}
+
+.PlayerPrefixText {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #CACACA;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: small-caps;
+    text-transform: uppercase;
+    display: inline;
+}
+
+.ScoreText {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: inline;
+}

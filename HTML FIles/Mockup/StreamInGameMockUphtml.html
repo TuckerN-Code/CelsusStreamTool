@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="InGame.css" />
+</head>
+<body style="background-image: url('InGameMockup.png')">
+    <div class="Scoreboard">
+        <table>
+            <tr>
+                <td id="Player1NameHolder"><div class="PlayerPrefixText" id="Player1Prefix"></div><div class="PlayerNameText" id="Player1Name"></div></td>
+                <td id="Player1ScoreHolder"><div class="ScoreText" id="Player1Score"></div></td>
+                <td id="Player2ScoreHolder"><div class="ScoreText" id="Player2Score"></div></td>
+                <td id="Player2NameHolder"><div class="PlayerPrefixText" id="Player2Prefix"></div><div class="PlayerNameText" id="Player2Name"></div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
+
+<script>
+    var localID = 0;
+    var prevID = -1;
+    const userAction = async () => {
+        const response = await fetch('https://localhost:5001/api/player');
+        const myPlayer = await response.json();
+        localID = myPlayer[0];
+        if (localID != prevID) {
+            document.getElementById("Player1Name").innerHTML = myPlayer[1];
+            document.getElementById("Player1Prefix").innerHTML = myPlayer[2];
+            //document.getElementById("Player1Twitter").innerHTML = myPlayer[3];
+            //document.getElementById("Player1Pronouns").innerHTML = myPlayer[4];
+            document.getElementById("Player2Name").innerHTML = myPlayer[5];
+            document.getElementById("Player2Prefix").innerHTML = myPlayer[6];
+            //document.getElementById("Player2Twitter").innerHTML = myPlayer[7];
+            //document.getElementById("Player2Pronouns").innerHTML = myPlayer[8];
+            //document.getElementById("TournamnetRound").innerHTML = myPlayer[9];
+            document.getElementById("Player1Score").innerHTML = myPlayer[10];
+            document.getElementById("Player2Score").innerHTML = myPlayer[11];
+            prevID = localID;
+        }
+    }
+    window.setInterval(userAction, 100);
+
+
+</script>
