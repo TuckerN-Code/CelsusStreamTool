@@ -1,6 +1,6 @@
 CELSUS STREAM TOOL USEAGE GUIDE
 *******************************
-VERSION A.0.0.3
+VERSION A.0.0.4
 *******************************
 
 1) Run CSTALPHA.bat
@@ -17,6 +17,7 @@ KNOWN ISSUES
 *******************************
 CHANGE LOG
 
-- Changed deployment method to hopefully include 3rd party resources and .net
-- Updated HTML
+- Changed deployment to a single file self contained release, should not require any
+intallation on user end be greatly increases size
+
 
