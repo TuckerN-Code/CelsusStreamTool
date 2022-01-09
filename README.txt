@@ -1,24 +1,23 @@
 CELSUS STREAM TOOL USEAGE GUIDE
 *******************************
-VERSION A.0.0.5
+VERSION A.0.0.7
 *******************************
 
-1) Run CSTALPHA.bat
+1) Install .Net 6.0 DESKTOP RUNTIME ||||| APP WILL NOT RUN WITHOUT THIS |||| https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 2) In the 'HTML Files/Mockup' folder open the 'StreamInGameMockUphtml.html' file
-3) Change the Player 1 Name and/or the Player 1 score
+3) Change any of the player info
 4) Tell me if something breaks (@celsus#7982 on discord)
 
 *******************************
 KNOWN ISSUES
 
--APITEST WILL NOT CLOSE. Uses ~20mb of RAM, pls close it from task manager
--I DIDN'T PUT ANY OF THE OTHER FIELDS ON THE HTML FILE (oops)
+-Clear function not implemented
+-HTML file looks bad :(
 
 *******************************
 CHANGE LOG
 
-- Changed deployment to a single file self contained release, should not require any
-intallation on user end be greatly increases size
-- Updated webserver to open a console for dubugging
+- Changed from an ASP.NET Rest API to a Node.js api which takes less rescources and is more sustainable
+- Implemented the Swap funtion
 
 
