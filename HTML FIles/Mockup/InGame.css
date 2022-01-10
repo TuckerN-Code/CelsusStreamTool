@@ -1,33 +1,49 @@
+.body {
+}
+
 .Scoreboard {
     text-align: center;
+    height: 100px;
 }
-.Scoreboard > div {
-    vertical-align:top;
-    display:inline;
+    .Scoreboard > table {
+        padding-left:350px;
+        height: inherit;
+    }
+
+    .Scoreboard > div {
+        vertical-align: top;
+        display: inline;
+        height:inherit;
+    }
+
+
+#Player1NameHolder {
+    min-width: 540px;
+    max-width: 540px;
+    background-color: black;
 }
 
-#Player1NameHolder
-{
-    padding-left:420px;
-    min-width:430px;
-    max-width:430px;
-}
-#Player1ScoreHolder
-{
-    min-width:100px;
+#Player1ScoreHolder {
+    min-width: 95px;
+    background-color:white;
 }
 
-#Player2ScoreHolder
-{
-    padding-left:10px;
-    min-width:100px;
+#ScoreSeperator {
+    width: 10px;
+    background-color: black;
 }
 
-#Player2NameHolder
-{
-    min-width:430px;
-    max-width:430px;
+#Player2ScoreHolder {
+    background-color: white;
+    min-width: 95px;
 }
+
+#Player2NameHolder {
+    min-width: 540px;
+    max-width: 540px;
+    background-color: black;
+}
+
 
 .PlayerNameText {
     font-family: "Arial Black", Gadget, sans-serif;
