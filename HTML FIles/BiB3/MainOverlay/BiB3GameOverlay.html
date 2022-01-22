@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="BiB3GameOverlay.css" />
+    <style type="text/css">
+        .auto-style1 {
+            height: 25px;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="Scoreboard">
+        <table class="auto-style1">
+            <tr>
+                <td id="Player1NameHolder"><div class="PlayerInfoContainer"> <div class="container"><p class="PlayerPrefixText" id="Player1Prefix"></p></div><div class="PlayerNameText" id="Player1Name" draggable="true"></div></div></td>
+                <td id="Player1ScoreHolder" class="auto-style1"><div class="ScoreContainer"><div class="ScoreText" id="Player1Score"></div></div></td>
+                <td id="ScoreSeperator"></td>
+                <td id="Player2ScoreHolder"><div class="ScoreContainer"><div class="ScoreText" id="Player2Score"></div></div></td>
+                <td id="Player2NameHolder"><div class="PlayerInfoContainer"> <div class="container"><p class="PlayerPrefixText" id="Player2Prefix"></p></div><div class="PlayerNameText" id="Player2Name"></div></div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="TournamentRound" id="TournamentRound"></div>
+
+</body>
+</html>
+
+<script>
+    var localID = 0;
+    var prevID = -1;
+    const userAction = async () => {
+        const response = await fetch('http://localhost:5549/players');
+        const myPlayer = await response.json();
+        localID = myPlayer["packageID"];
+        if (localID != prevID) {
+            document.getElementById("Player1Name").innerHTML = myPlayer["player1Tag"];
+            document.getElementById("Player1Prefix").innerHTML = myPlayer["player1Prefix"];
+            //document.getElementById("Player1Twitter").innerHTML = myPlayer["player1Twitter"];
+            //document.getElementById("Player1Pronouns").innerHTML = myPlayer["player1Pronouns"];
+            document.getElementById("Player2Name").innerHTML = myPlayer["player2Tag"];
+            document.getElementById("Player2Prefix").innerHTML = myPlayer["player2Prefix"];
+            //document.getElementById("Player2Twitter").innerHTML = myPlayer["player2Twitter"];
+            //document.getElementById("Player2Pronouns").innerHTML = myPlayer["player2Pronouns"];
+            document.getElementById("TournamentRound").innerHTML = myPlayer["tournamentRound"];
+            document.getElementById("Player1Score").innerHTML = myPlayer["player1Score"];
+            document.getElementById("Player2Score").innerHTML = myPlayer["player2Score"];
+            prevID = localID;
+        }
+    }
+    window.setInterval(userAction, 100);
+
+
+</script>
