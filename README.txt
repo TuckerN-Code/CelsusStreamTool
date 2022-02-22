@@ -4,10 +4,10 @@ VERSION B.1.0.0
 *******************************
 
 1) Install .Net 6.0 DESKTOP RUNTIME ||||| APP WILL NOT RUN WITHOUT THIS |||| https://dotnet.microsoft.com/en-us/download/dotnet/6.0
-2) Run the CST.EXT file
+2) Run the CelsusStreamTool.exe file
 	i) You will get a popup asking to allow a node.js sever to run
 	ii) this is used to send data to the web page and is required.
-3) In the 'HTML Files/Mockup' folder open the 'StreamInGameMockUphtml.html' file
+3) Drag the html files from the "HTML Files" folder into an OBS Scenes
 4) Change any of the player info
 5) Tell me if something breaks (@celsus#7982 on discord)
 
@@ -34,9 +34,16 @@ KNOWN ISSUES
 *******************************
 CHANGE LOG
 
-- HTML no longer looks as bad :)
+- Added ingame and commentator overlays
 - Added Smash.gg integration
-- Included BiB3 in game overlay
+- Removed old HTML
+- User is now only required to input the tournamnet name from the smash.gg link
 
+*******************************
+CHANGING COLORS FONT AND LOGO
+The colors, fonts, and logo on the html pages are all customizable.
+At the top of the .css file (open with text editor) in the HTML files folder is a list of variables
+These will let you change the values for many different parts of the overlay.
 
+To change the logo simply drag in a png file and rename it to logo.png
 

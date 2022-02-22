@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "OTGStreamToolUserSide/1.0.0": {
+      "CelsusStreamTool/1.0.0": {
         "dependencies": {
+          "CelsusBackEnd": "1.0.0",
           "GraphQL.Client": "4.0.2",
           "GraphQL.Client.Serializer.Newtonsoft": "4.0.2",
-          "OTGStreamToolBackEnd": "1.0.0",
           "System.Reactive.Reference": "4.3.0.0"
         },
         "runtime": {
-          "OTGStreamToolUserSide.dll": {}
+          "CelsusStreamTool.dll": {}
         }
       },
       "GraphQL.Client/4.0.2": {
@@ -81,9 +81,9 @@
         }
       },
       "System.Reactive/4.3.2": {},
-      "OTGStreamToolBackEnd/1.0.0": {
+      "CelsusBackEnd/1.0.0": {
         "runtime": {
-          "OTGStreamToolBackEnd.dll": {}
+          "CelsusBackEnd.dll": {}
         }
       },
       "System.Reactive.Reference/4.3.0.0": {
@@ -97,7 +97,7 @@
     }
   },
   "libraries": {
-    "OTGStreamToolUserSide/1.0.0": {
+    "CelsusStreamTool/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -151,7 +151,7 @@
       "path": "system.reactive/4.3.2",
       "hashPath": "system.reactive.4.3.2.nupkg.sha512"
     },
-    "OTGStreamToolBackEnd/1.0.0": {
+    "CelsusBackEnd/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,0 +1,149 @@
+:root {
+    --player1-bg-color: #003868;
+    --Player2-bg-color: #003868;
+    --Comm-bg-color: #003868;
+    --Player-text-color: white;
+    --Player-Prefix-Text-Color: grey;
+    --Info-bg-color: lightgrey;
+    --Info-Text-color:black;
+    --Global-Font: Archivo;
+}
+
+.body
+{
+    width: 1980px;
+    height: 1080px;
+    background:black;
+}
+
+.scoreboard {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.commboard {
+    height:1080px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.commboard table{
+    align-self:flex-end;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.Infoboard{
+    margin-right:auto;
+    margin-left:auto;
+    width:800px;
+    display:table;
+    table-layout:fixed;
+}
+
+.Infoboard > tr > td{
+    max-width:300px;
+    padding:0px;
+}
+#P1NameHolder {
+    text-align: center;
+    background: linear-gradient(45deg, rgba(85,116,124,0.4) 0%, rgba(39,84,113,1) 32%, rgba(0,56,104,1) 100%);
+    width: 400px;
+}
+
+#P2NameHolder {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0,56,104,1) 0%, rgba(39,84,113,1) 68%, rgba(85,116,124,0.4) 100%);
+    width: 400px
+}
+
+.NameBuffer{
+    width:30px;
+    min-width:30px;
+    display:inline;
+}
+
+.ScoreHolder
+{
+    text-align:center;
+    background-color:white;
+    font-family:var(--Global-Font);
+    font-size:48px;
+    display:inline-block;
+}
+
+.ScoreText {
+    text-align: center;
+    font-family: var(--Global-Font);
+    font-size: 48px;
+    display: inline-block;
+    text-anchor:middle;
+    fill:black;
+}
+
+.ScoreHolder > p{
+    display:inline;
+}
+
+.PlayerNameText {
+    font-family: var(--Global-Font);
+    font-size: 58px;
+    color: var(--Player-text-color);
+    text-anchor: middle;
+    fill: var(--Player-text-color);
+    display:block;
+}
+
+.PlayerPrefixText {
+    font-family: var(--Global-Font);
+    font-size: 48px;
+    color: var(--Player-Prefix-Text-Color);
+    text-anchor: middle;
+    vertical-align: baseline;
+    fill: var(--Player-Prefix-Text-Color);
+    display:block;
+}
+
+.TourInfoText {
+    display: table-cell;
+    width: 2%;
+    font-family: var(--Global-Font);
+    font-size: 24px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: var(--Info-Text-color);
+    background-color: var(--Info-bg-color);
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    white-space: nowrap;
+}
+
+#P1Tag{
+
+}
+    #P1Tag .letter {
+        display: inline-block;
+    }
+
+#P1Poly{
+    fill:var(--player1-bg-color);
+}
+
+#P2Poly{
+    fill:var(--Player2-bg-color);
+}
+
+.PolyText{
+    display:inline-block;
+}
+
+#C1Path{
+    stroke: var(--Comm-bg-color);
+    stroke-width: 66px;
+}
+
+#C2Path{
+    stroke: var(--Comm-bg-color);
+    stroke-width: 66px
+}

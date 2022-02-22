@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="InGameOverlay.css" />
+</head>
+
+<body class="body">
+    <table class="scoreboard">
+        <tr>
+            <td>
+                <svg height="66" width="500">
+                    <polygon id="P1Poly" points="500,0 500,0 500,66 500,66" display="inline" />
+                    <text x="55%" y="50%" dominant-baseline="middle" class="PlayerNameText"><tspan class="PlayerPrefixText" id="P1Prefix">APPLE</tspan><tspan id="P1Tag">JeJaJeJa</tspan></text>
+                </svg>
+            </td>
+            <td>
+                <svg height="66" width="80">
+                    <polygon id="ScorePoly" points="0,0 80,0 80,0 0,0" display="inline" fill="white" />
+
+                    <text x="50%" y="50%" dominant-baseline="middle" class="ScoreText"><tspan id="P1Score">1</tspan><tspan>:</tspan><tspan id="P2Score">2</tspan></text>
+                </svg>
+            </td>
+            <td>
+                <svg height="66" width="500">
+                    <polygon id="P2Poly" points="0,0 0,0 0,66 0,66" display="inline" />
+                    <text x="45%" y="50%" dominant-baseline="middle" class="PlayerNameText"><tspan class="PlayerPrefixText" id="P2Prefix">APPLE</tspan><tspan id="P2Tag">JeJaJeJa</tspan></text>
+                </svg>
+            </td>
+        </tr>
+    </table>
+    <table class="Infoboard">
+        <tr>
+            <td class="TourInfoText" id="TourName">Winners QuarterFinals</td>
+            <td class="TourInfoText" id="TourRound">Winners QuarterFinals</td>
+            <td class="TourInfoText" id="TourEvent">Winners QuarterFinals</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var isLoad = false;
+    var DataRefreshAni = anime({
+        targets: ['.PlayerNameText'],
+        opacity: ['0%', '100%'],
+        duration: 700,
+        easing: 'easeInOutQuad',
+        autoplay: false
+    });
+    
+    var textWrapper = document.querySelector("#P1Tag");
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<tspan class='letter'>$&</tspan>");
+    textWrapper = document.querySelector("#P1Prefix");
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<tspan class='letter'>$&</tspan>");
+
+    var PlayerNameLoad = anime.timeline({}).add({
+        targets: '#ScorePoly',
+        points: '0, 0 80, 0 80, 66 0, 66',
+        duration: 200,
+        easing: 'linear',
+        autoplay: false
+    }).add({
+        targets: '#P1Poly',
+        points: '0,0 500,0 500,66 66,66',
+        duration: 500,
+        easing: 'linear',
+    }).add({
+        targets: '#P2Poly',
+        points: '0,0 500,0 440,66 0,66',
+        duration: 500,
+        easing: 'linear',
+    }, '-=500').add({
+        targets: ['.PlayerNameText'],
+        opacity: ['0%', '100%'],
+        duration: 1200,
+        delay: (el, i) => 500 + 30 * i,
+        easing: 'easeOutExpo'
+    }, '-=300').add({
+        targets: '.Infoboard',
+        opacity: ['0%', '100%'],
+        duration: 400,
+        easing: 'linear',
+    }, '-=1200');
+
+    var svgP1PolygonTransformation = anime({
+        targets: '#P1Poly',
+        points: '0,0 500,0 500,66 66,66',
+        duration: 500,
+        easing: 'linear',
+        autoplay: false,
+
+    });
+    var svgP2PolygonTransformation = anime({
+        targets: '#P2Poly',
+        points: '0,0 500,0 440,66 0,66',
+        duration: 500,
+        easing: 'linear',
+        autoplay: false
+    });
+    var svgScoreTransformation = anime({
+        targets: '#ScorePoly',
+        points: '0, 0 80, 0 80, 66 0, 66',
+        duration: 200,
+        easing: 'linear',
+        autoplay: false
+    });
+
+
+
+    function startUpAnis() {
+        PlayerNameLoad.play();
+        isLoad = true;
+    }
+    document.onload = startUpAnis();
+
+</script>
+
+<script>
+    var localID = 0;
+    var prevID = -1;
+    const userAction = async () => {
+        const response = await fetch('http://localhost:5549/players');
+        const myPlayer = await response.json();
+        var refreshPlayers = false;
+        localID = myPlayer["packageID"];
+        if (localID != prevID) {
+            if (document.getElementById("P1Tag").innerHTML != myPlayer["player1Tag"] ||
+                document.getElementById("P1Prefix").innerHTML != myPlayer["player1Prefix"] ||
+                document.getElementById("P2Tag").innerHTML != myPlayer["player2Tag"] ||
+                document.getElementById("P2Prefix").innerHTML != myPlayer["player2Prefix"]) {
+                refreshPlayers = true;
+            }
+            document.getElementById("P1Tag").innerHTML = myPlayer["player1Tag"];
+            document.getElementById("P1Prefix").innerHTML = myPlayer["player1Prefix"];
+            //document.getElementById("Player1Twitter").innerHTML = myPlayer["player1Twitter"];
+            //document.getElementById("Player1Pronouns").innerHTML = myPlayer["player1Pronouns"];
+            document.getElementById("P2Tag").innerHTML = myPlayer["player2Tag"];
+            document.getElementById("P2Prefix").innerHTML = myPlayer["player2Prefix"];
+            //document.getElementById("Player2Twitter").innerHTML = myPlayer["player2Twitter"];
+            //document.getElementById("Player2Pronouns").innerHTML = myPlayer["player2Pronouns"];
+            document.getElementById("TourRound").innerHTML = myPlayer["tournamentRound"];
+            document.getElementById("P1Score").innerHTML = myPlayer["player1Score"];
+            document.getElementById("P2Score").innerHTML = myPlayer["player2Score"];
+            document.getElementById("TourName").innerHTML = myPlayer["tournamnetName"];
+            document.getElementById("TourEvent").innerHTML = myPlayer["tournamnetEvent"];
+            prevID = localID;
+            if (refreshPlayers && !isLoad)
+                DataRefreshAni.restart();
+            else
+                isLoad = false;
+        }
+    }
+    window.setInterval(userAction, 100);
+
+
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="InGameOverlay.css" />
+</head>
+
+<body class="body">
+    <div class="commboard">
+        <table class="Infoboard">
+            <tr>
+                <td class="TourInfoText" id="Comm1Twitter">Winners QuarterFinals</td>
+                <td class="TourInfoText" id="TourName">Winners QuarterFinals</td>
+                <td class="TourInfoText" id="Comm2Twitter">Winners QuarterFinals</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <svg height="66" width="500">
+                        <path id="C1Path" d="M 500 0 H 0 V 66 H 500 V 0" />
+                        <text x="55%" y="50%" dominant-baseline="middle" class="PlayerNameText"><tspan class="PlayerPrefixText" id="Comm1Prefix">APPLE</tspan><tspan id="Comm1Tag">JeJaJeJa</tspan></text>
+                    </svg>
+                </td>
+                <td>
+                    <svg height="66" width="80">
+                        <image xlink:href="logo.png" height="66" width="80"/>
+                    </svg>
+                </td>
+                <td>
+                    <svg height="66" width="500">
+                        <path id="C2Path" d="M 0 0 H 500 V 66 H 0 V 0" />
+                        <text x="45%" y="50%" dominant-baseline="middle" class="PlayerNameText"><tspan class="PlayerPrefixText" id="Comm2Prefix">APPLE</tspan><tspan id="Comm2Tag">JeJaJeJa</tspan></text>
+                    </svg>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var isLoad = false;
+    var DataRefreshAni = anime({
+        targets: ['.PlayerNameText'],
+        opacity: ['0%', '100%'],
+        duration: 700,
+        easing: 'easeInOutQuad',
+        autoplay: false
+    });
+
+    var PlayerNameLoad = anime.timeline({}).add({
+        targets: '#ScorePoly',
+        points: '0, 0 80, 0 80, 66 0, 66',
+        duration: 200,
+        easing: 'linear',
+        autoplay: false
+    }).add({
+        targets: ['#C1Path', '#C2Path'],
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1500
+    }).add({
+        targets: ['.PlayerNameText'],
+        opacity: ['0%', '100%'],
+        duration: 1200,
+        delay: (el, i) => 500 + 30 * i,
+        easing: 'easeOutExpo'
+    }, '-=600').add({
+        targets: '.Infoboard',
+        opacity: ['0%', '100%'],
+        duration: 400,
+        easing: 'linear',
+    }, '-=1200');
+
+    var svgP1PolygonTransformation = anime({
+        targets: '#P1Poly',
+        points: '0,0 500,0 500,66 66,66',
+        duration: 500,
+        easing: 'linear',
+        autoplay: false,
+
+    });
+    var svgP2PolygonTransformation = anime({
+        targets: '#P2Poly',
+        points: '0,0 500,0 440,66 0,66',
+        duration: 500,
+        easing: 'linear',
+        autoplay: false
+    });
+    var svgScoreTransformation = anime({
+        targets: '#ScorePoly',
+        points: '0, 0 80, 0 80, 66 0, 66',
+        duration: 200,
+        easing: 'linear',
+        autoplay: false
+    });
+
+    function startUpAnis() {
+        PlayerNameLoad.play();
+        isLoad = true;
+    }
+    document.onload = startUpAnis();
+
+</script>
+
+<script>
+    var localID = 0;
+    var prevID = -1;
+    const userAction = async () => {
+        const response = await fetch('http://localhost:5549/players');
+        const myPlayer = await response.json();
+        var refreshPlayers = false;
+        localID = myPlayer["packageID"];
+        if (localID != prevID) {
+            document.getElementById("Comm1Tag").innerHTML = myPlayer["comm1Name"];
+            document.getElementById("Comm1Prefix").innerHTML = myPlayer["comm1Prefix"];
+            document.getElementById("Comm1Twitter").innerHTML = myPlayer["comm1Twitter"];
+            document.getElementById("Comm2Tag").innerHTML = myPlayer["comm2Name"];
+            document.getElementById("Comm2Prefix").innerHTML = myPlayer["comm2Prefix"];
+            document.getElementById("Comm2Twitter").innerHTML = myPlayer["comm2Twitter"];
+            document.getElementById("TourName").innerHTML = myPlayer["tournamnetName"];
+            prevID = localID;
+            if (refreshPlayers && !isLoad)
+                DataRefreshAni.restart();
+            else
+                isLoad = false;
+        }
+    }
+    window.setInterval(userAction, 100);
+
+
+</script>
