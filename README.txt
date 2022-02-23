@@ -33,6 +33,7 @@ KNOWN ISSUES
 
 *******************************
 CHANGE LOG
+- Find source code here: https://github.com/TuckerN-Code/OTGTournamentStreamTool
 
 - Added ingame and commentator overlays
 - Added Smash.gg integration
