@@ -39,6 +39,7 @@
     width:800px;
     display:table;
     table-layout:fixed;
+
 }
 
 .Infoboard > tr > td{
