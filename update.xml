@@ -3,5 +3,5 @@
   <version>1.0.2</version>
   <url>https://github.com/TuckerN-Code/CelsusStreamTool/archive/refs/heads/main.zip</url>
   <changelog>https://github.com/TuckerN-Code/CelsusStreamTool/releases</changelog>
-  <mandatory>false</mandatory>
+  <mandatory>true</mandatory>
 </item>
