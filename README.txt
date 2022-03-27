@@ -1,6 +1,6 @@
 CELSUS STREAM TOOL USEAGE GUIDE
 *******************************
-VERSION B.1.0.0
+VERSION B.1.3.0
 *******************************
 
 1) Install .Net 6.0 DESKTOP RUNTIME ||||| APP WILL NOT RUN WITHOUT THIS |||| https://dotnet.microsoft.com/en-us/download/dotnet/6.0
@@ -29,17 +29,12 @@ HOW TO USE SMASH GG
 *******************************
 KNOWN ISSUES
 
--No exception proofing, expect crashes when using the smash.gg stream queue page
+-THIS IS A QUICK FIX DO NOT USE SETTINGS
 
 *******************************
 CHANGE LOG
-- Find source code here: https://github.com/TuckerN-Code/OTGTournamentStreamTool
-
-- Added ingame and commentator overlays
-- Added Smash.gg integration
-- Removed old HTML
-- User is now only required to input the tournamnet name from the smash.gg link
-
+- PROGRAM WILL DISPLAY SETS EVEN IF THERE ARE SETS WITH MISSINGS PLAYERS
+	WOULD PREVIOUSLY RETURN NULL
 *******************************
 CHANGING COLORS FONT AND LOGO
 The colors, fonts, and logo on the html pages are all customizable.
